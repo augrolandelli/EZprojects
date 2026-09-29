@@ -1,3 +1,4 @@
+using api.Common;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -7,10 +8,16 @@ namespace api.Controllers
     public class WeatherForecastController : ControllerBase
     {
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public int Get()
+        [HttpGet("error-app")]
+        public void Geterror()
         {
-            return 2;
+            throw new AppException(404, "Proyecto no encontrado");
+        }
+
+        [HttpGet("error-bug")]
+        public void Getbug()
+        {
+            throw new InvalidOperationException("detalle secreto interno");
         }
     }
 }
