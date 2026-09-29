@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="api.Tests/api.Tests.csproj" Id="2417310e-3a0e-455a-9183-3cd2d6772bde" />
+  <Project Path="api/api.csproj" Id="c99285ec-0569-49bb-ac7c-c49805d056a7" />
+</Solution>
