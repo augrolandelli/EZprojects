@@ -2,13 +2,15 @@
 
 namespace api.Models
 {
-    public class Integrante
+    public class Integrante : EntidadBase, IDelEspacio
     {
-        private int Id;
-        private TipoIntegrante Tipo;
-        private Guid? UsuarioId;
-        private string Nombre;
-        private Roles Rol;
-        private bool Activo;
+        public TipoIntegrante Tipo { get; set; }
+        public Guid? UsuarioId { get; set; }
+        public Usuario? Usuario { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public Rol Rol { get; set; }
+        public bool Activo { get; set; } = true;
+        public Guid EspacioId { get; set; }
+        public Espacio Espacio { get; set; } = null!;
     }
 }

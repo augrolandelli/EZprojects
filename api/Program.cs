@@ -1,4 +1,8 @@
 using api.Common;
+using api.Data;
+using api.Data.Interceptors;
+using api.Tenancy;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +23,20 @@ builder.Services.AddSerilog((services, lc) => lc
     .ReadFrom.Services(services)
 );
 
+builder.Services.AddDbContext<AppDbContext>((sp, options) =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
+        .AddInterceptors(sp.GetRequiredService<FechasInterceptor>())
+        .AddInterceptors(sp.GetRequiredService<EspacioInterceptor>())
+    );
+
+builder.Services.AddScoped<ITenancyContext, TenancyContext>();
+
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddHealthChecks();
+
+builder.Services.AddScoped<FechasInterceptor>();
+builder.Services.AddScoped<EspacioInterceptor>();
 
 var app = builder.Build();
 

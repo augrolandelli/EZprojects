@@ -1,6 +1,6 @@
 ﻿namespace api.Enums
 {
-    public enum Monedas
+    public enum Moneda
     {
         USD=0,
         ARS=1

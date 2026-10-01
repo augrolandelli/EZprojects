@@ -1,10 +1,11 @@
 ﻿namespace api.Models
 {
-    public class Usuario
+    public class Usuario : EntidadBase
     {
-        private int Id;
-        private string Email;
-        private string Nombre;
-        private string PasswordHash;
+        public string Nombre { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+        public ICollection<Integrante> Integrantes { get; set; } = new List<Integrante>();
+
     }
 }

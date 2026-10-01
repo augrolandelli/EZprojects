@@ -1,6 +1,6 @@
 ﻿namespace api.Enums
 {
-    public enum Roles
+    public enum Rol
     {
         Dueno=0,
         Miembro=1,
